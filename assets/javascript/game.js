@@ -1,7 +1,7 @@
 //global variables
-var hangmanWords = ["attention", "believer", "unforgettable", "wild thoughts"];
-var videosArray = ["https://www.youtube.com/embed/nfs8NYg7yQM?autoplay=1","https://www.youtube.com/embed/7wtfhZwyrcc?autoplay=1","https://www.youtube.com/embed/CTFtOOh47oo?autoplay=1","https://www.youtube.com/embed/fyaI4-5849w?autoplay=1"];
-var title_G = ["Atention","Imagine Dragons - Believer", "French Montana - Unforgettable ft. Swae Lee", "Wild Thoughts ft. Rihanna, Bryson Tiller"];
+var hangmanWords = ["attention", "believer", "unforgettable", "wild thoughts", "cold ft future", "shape of you"];
+var videosArray = ["https://www.youtube.com/embed/nfs8NYg7yQM?autoplay=1","https://www.youtube.com/embed/7wtfhZwyrcc?autoplay=1","https://www.youtube.com/embed/CTFtOOh47oo?autoplay=1","https://www.youtube.com/embed/fyaI4-5849w?autoplay=1","https://www.youtube.com/embed/XatXy6ZhKZw?autoplay=1", "https://www.youtube.com/embed/JGwWNGJdvx8?autoplay=1"];
+var title_G = ["Charlie Puth - Attention","Imagine Dragons - Believer", "French Montana - Unforgettable ft. Swae Lee", "Wild Thoughts ft. Rihanna, Bryson Tiller", "Maroon 5 - Cold ft. Future", "Ed Sheeran - Shape of You"];
 var currentWord_G;
 var correctLetterArray_G;
 var currentWordArr_G;
@@ -83,6 +83,7 @@ function anyKey() {
   document.getElementById("word").innerHTML= correctLetterArray_G.join(" ");
   document.getElementById("wins").innerHTML= wins;
   document.getElementById("titleHeader").innerHTML= "WELCOME TO HANGMAN";
+  document.getElementById("pressAnyKey").innerHTML= "Press any key to get started"
 }
 
 // End funtion anyKey
@@ -97,30 +98,36 @@ function playing() {
 // Function Game execute the futions necesaries to play
 
 function game(letterTyped) {
-  if (!isGameStarted) {
+    if (!isGameStarted) {
     anyKey();
     isGameStarted = true;
     return;
   }
-  letterTyped_G = letterTyped
+  letterTyped_G = letterTyped.toLowerCase();
+  document.getElementById("pressAnyKey").innerHTML= "";
   if (attemptsLeft_G > 0) {
     playing();
     if (!correctLetterArray_G.includes("_")) {
-      wins = wins++
+      wins = wins + 1;
       document.getElementById("wins").innerHTML= wins;
       document.getElementById("image").src = "assets/images/" + currentWord_G + ".jpg";
   //    document.getElementById("video").src = "https://www.youtube.com/embed/7wtfhZwyrcc?autoplay=1"
       document.getElementById("video").src = videosArray[currentWordPosition_G];
       document.getElementById("titleHeader").innerHTML= title_G[currentWordPosition_G];
+      document.getElementById("pressAnyKey").innerHTML= "Press Any Key to Continue";
+
       attemptsLeft_G = 12;
       isGameStarted = false;
-      wins = wins++
+
+      console.log("wins :" + wins);
     }
   } else {
     attemptsLeft_G = 12;
+    wins = 0;
     isGameStarted = false;
     document.getElementById("titleHeader").innerHTML= "GAME OVER";
     document.getElementById("image").src = "assets/images/game-over-arcade.png";
+    document.getElementById("pressAnyKey").innerHTML= "Press Any Key to Continue";
 
   }
 }

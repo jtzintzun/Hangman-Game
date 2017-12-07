@@ -49,6 +49,7 @@ body {
   border: 5px dashed #eee;
   text-align: center;
   margin-top: 10px;
+  border-radius: 10px;
 }
 
 .row {
