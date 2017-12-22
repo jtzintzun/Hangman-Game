@@ -6,27 +6,28 @@ header {
 footer{
   background-image: radial-gradient(red, yellow);
   border: 5px dashed #eee;
-  padding: 15px;
-  margin-top: 15px;
-  height: 100px;
+  padding: 10px;
+  margin-top: 5px;
+  height: 70px;
+  font-size: 10px;
 }
 
 h1 {
   text-align: center;
   color: white;
-  padding: 15px
+  padding: 12px
 }
 
 h2 {
   text-align: center;
   color: white;
-  padding: 7px;
+  padding: 6px;
   font-style: oblique;
 }
 h3 {
   text-align: center;
   color: white;
-  margin: 20px;
+  margin: 16px;
   font-style: oblique;
   font-size: 40px;
 }
@@ -60,7 +61,7 @@ body {
 
 .imgAline {
   width: 100%;
-  max-height:150px;
+  max-height:100px;
 }
 
 .center {
