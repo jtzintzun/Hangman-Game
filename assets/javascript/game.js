@@ -14,10 +14,15 @@ var currentWordPosition_G;
 //functions
 
 function newWord() {
-  var random = Math.floor(Math.random() * (hangmanWords.length - 1)) + 1;
+  var random = Math.floor(Math.random() * (hangmanWords.length));
   console.log("random number:" + random);
+  console.log('hangmanWords.length' + hangmanWords.length);
+  console.log('hangmanWords: ' + hangmanWords);
   currentWordPosition_G = random
   var currentWord = hangmanWords[random]
+  hangmanWords.splice(random,1)
+  console.log('hangmanWords after splice: ' + hangmanWords);
+
   return currentWord
 }
 // end of function newWord
@@ -115,6 +120,10 @@ function game(letterTyped) {
       document.getElementById("video").src = videosArray[currentWordPosition_G];
       document.getElementById("titleHeader").innerHTML= title_G[currentWordPosition_G];
       document.getElementById("pressAnyKey").innerHTML= "Press Any Key to Continue";
+
+      videosArray.splice(currentWordPosition_G,1)
+      title_G.splice(currentWordPosition_G,1)
+
 
       attemptsLeft_G = 12;
       isGameStarted = false;
